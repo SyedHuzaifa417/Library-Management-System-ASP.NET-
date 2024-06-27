@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Library.Models.Biography>
+
+@{
+    ViewBag.Title = "Biography";
+}
+
+<h2>Biography of Authors</h2>
+
+<div class="baton my-lg-4">
+    @Html.ActionLink("Create New", "Create", new { area = "" }, new { @class = "btn btn-default " })
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BiographyText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author.AuthorName)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BiographyText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.AuthorName)
+            </td>
+            <td>
+                <div class="baton edit">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BiographyID }, new { @class = "btn btn-default " })
+                </div>
+                <div class="baton details">
+                    @Html.ActionLink("Details", "Details", new { id = item.BiographyID }, new { @class = "btn btn-default " })
+                </div>
+                <div class="baton delete">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BiographyID }, new { @class = "btn btn-default " })
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

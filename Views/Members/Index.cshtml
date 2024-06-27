@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Library.Models.Member>
+
+@{
+    ViewBag.Title = "Members";
+}
+
+<h2>Our Members</h2>
+
+<div class="baton my-lg-4">
+    @Html.ActionLink("Create New", "Create", new { area = "" }, new { @class = "btn btn-default " })
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Joined_Membership)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Joined_Membership)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <div class="baton edit"> @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }, new { @class = "btn btn-default " })</div>
+                <div class="baton details">  @Html.ActionLink("Details", "Details", new { id = item.MemberId }, new { @class = "btn btn-default " })</div>
+                <div class="baton delete">  @Html.ActionLink("Delete", "Delete", new { id = item.MemberId }, new { @class = "btn btn-default " })</div>
+            </td>
+        </tr>
+    }
+
+</table>

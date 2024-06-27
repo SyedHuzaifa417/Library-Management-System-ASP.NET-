@@ -1,0 +1,135 @@
+﻿
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;  Prevent horizontal scrollbars 
+}
+
+.containers {
+    width: 100%;
+    margin: 0;
+    padding:0;
+}
+.imglink{
+    margin-left:50px
+}
+.navbarr {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    z-index: 1000; 
+}
+
+.bg-img {
+    background-image: url('/images/asa.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: auto;
+    z-index: -1;
+}
+
+.content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: auto;
+}
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+.active-link {
+    color: #333;
+    background-color: rgb(98, 125, 116, 0.60); /* Lighter semi-transparent background */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+    font-weight: bold;
+}
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Slightly darker background on hover */
+}
+.baton {
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    background-color: rgb(130, 160, 160, 0.30);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+.edit {
+    background-color: rgb(10, 138, 5, 0.30);
+}
+.details {
+    background-color: rgb(13, 119, 198, 0.30);
+}
+.delete {
+    background-color: rgb(176, 13, 13, 0.30);
+}
+    .baton:has( :hover) {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+
+#about-us {
+    margin: 100px 100px;
+}
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.about-text {
+    width: 20%;
+    text-align: left;
+}
+
+
+.navbar .serch-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+    width: 200px;
+    background-color: rgb(130, 160, 160, 0.30);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .serch-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 24px;
+    color: #333;
+    background-color: rgb(130, 160, 160, 0.30);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .navbar .serch-button:hover {
+        background-color: rgba(255, 255, 255, 0.5)
+    }

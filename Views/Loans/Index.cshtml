@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Library.Models.Loan>
+
+@{
+    ViewBag.Title = "Loans";
+}
+
+<h2>Details of Loans</h2>
+
+<div class="baton my-lg-4">
+    @Html.ActionLink("Create New", "Create", new { area = "" }, new { @class = "btn btn-default " })
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.returnDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Book.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.MemberName)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoanDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.returnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Member.MemberName)
+            </td>
+            <td>
+                <div class="baton edit">@Html.ActionLink("Edit", "Edit", new { id = item.LoanId }, new { @class = "btn btn-default " })</div>
+                <div class="baton details"> @Html.ActionLink("Details", "Details", new { id = item.LoanId }, new { @class = "btn btn-default " })</div>
+                <div class="baton delete"> @Html.ActionLink("Delete", "Delete", new { id = item.LoanId }, new { @class = "btn btn-default " })</div>
+            </td>
+        </tr>
+    }
+
+</table>

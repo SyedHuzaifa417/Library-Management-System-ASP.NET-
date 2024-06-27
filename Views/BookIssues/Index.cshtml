@@ -1,0 +1,153 @@
+﻿
+@model Library.Models.BookIssue
+
+@{
+    ViewBag.Title = "Book Issues";
+    List<Library.Models.Book> books = ViewBag.Books as List<Library.Models.Book>;
+    List<Library.Models.Member> members = ViewBag.Members as List<Library.Models.Member> ?? new List<Library.Models.Member>();
+    List<Library.Models.BookIssue> issuedBooks = ViewBag.IssuedBooks as List<Library.Models.BookIssue>;
+
+}
+
+<h2>Issue Books</h2>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IssueCode)
+        @Html.TextBoxFor(model => model.IssueCode, new { @class = "form-control", Value = ViewBag.IssueCode })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IssueDate)
+        @Html.TextBoxFor(model => model.IssueDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ExpectedReturnDate)
+        @Html.TextBoxFor(model => model.ExpectedReturnDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MemberId)
+        @Html.DropDownListFor(model => model.MemberId, new SelectList(members, "MemberId", "MemberName"), "Select Member", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.MemberId, "", new { @class = "text-danger" })
+
+    </div>
+
+    <h3 class="mt-lg-4">Books to Issue</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Quantity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="BookIssueDetails">
+            @for (int i = 0; i < Model.BookIssueDetails.Count; i++)
+            {
+                <tr>
+                    <td>
+
+                        @Html.DropDownListFor(model => model.BookIssueDetails[i].BookTitle, new SelectList(books, "Title", "Title"), "-- Select Book --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BookIssueDetails[i].BookId, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.BookIssueDetails[i].Quantity, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BookIssueDetails[i].Quantity, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="removeBookIssueDetail(this)">Remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary" onclick="addBookIssueDetail()">Add Book</button>
+    <input type="submit" value="Issue Books" class="btn btn-success" />
+}
+
+<h3 class="my-lg-4">Issued Books</h3>
+
+<table class="table bg-light">
+    <thead>
+        <tr>
+            <th>Issue Code</th>
+            <th>Issue Date</th>
+            <th>Expected Return Date</th>
+            <th>Member</th>
+            <th>Books</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var issueCodeGroup in issuedBooks.GroupBy(ib => ib.IssueCode))
+        {
+            <tr>
+                <td>@issueCodeGroup.Key</td>
+                <td>@issueCodeGroup.First().IssueDate.ToShortDateString()</td>
+                <td>@issueCodeGroup.First().ExpectedReturnDate.ToShortDateString()</td>
+                <td>@(members.FirstOrDefault(m => m.MemberId == issueCodeGroup.First().MemberId)?.MemberName)</td>
+                <td>
+                    <ul>
+                        @foreach (var detail in issueCodeGroup.SelectMany(ib => ib.BookIssueDetails))
+                        {
+                            <li>@detail.BookTitle</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var detail in issueCodeGroup.SelectMany(ib => ib.BookIssueDetails))
+                        {
+                            <li>@detail.Quantity</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@using (Html.BeginForm("DeleteAll", "BookIssues", FormMethod.Post))
+{
+    <input type="submit" value="Delete All Book Issues" class="btn btn-danger" />
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        var books = @Html.Raw(Json.Encode(books));
+
+        function addBookIssueDetail() {
+            var rowIndex = $('#BookIssueDetails').children().length;
+            var bookOptions = '<option value="">-- Select Book --</option>' + books.map(function (book) {
+                return '<option value="' + book.Title + '">' + book.Title + '</option>';
+            }).join('');
+
+            var row = '<tr>' +
+                '<td><select class="form-control" name="BookIssueDetails[' + rowIndex + '].BookTitle">' + bookOptions + '</select></td>' +
+                '<td><input class="form-control" type="text" name="BookIssueDetails[' + rowIndex + '].Quantity" /></td>' +
+                '<td><button type="button" class="btn btn-danger" onclick="removeBookIssueDetail(this)">Remove</button></td>' +
+                '</tr>';
+            $('#BookIssueDetails').append(row);
+        }
+
+        function removeBookIssueDetail(button) {
+            $(button).closest('tr').remove();
+        }
+    </script>
+}

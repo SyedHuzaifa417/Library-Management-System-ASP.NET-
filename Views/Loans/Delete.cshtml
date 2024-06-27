@@ -1,0 +1,59 @@
+﻿@model Library.Models.Loan
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Loan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.returnDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.returnDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.MemberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.MemberName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default bg-danger text-white mx-3" />
+            <div class="col-md-offset-2 col-md-10 my-4  ">
+                @Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "btn btn-default text-bg-secondary " })
+            </div>
+        </div>
+    }
+</div>

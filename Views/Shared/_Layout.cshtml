@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/StyleSheet1.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="~/favicon.ico" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div class="bg-img">
+        <nav class="navbar navbarr navbar-expand-lg mb-lg-5">
+            <div class="container">
+                <a class="navbar-brand h-25 imglink " href="@Url.Action("Index", "Home", new { area = "" })">
+                    <img src="~/images/logo2.png" alt="Logo" style="height: 50px;">
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 justify-content-center">
+                        <li>@Html.ActionLink("Authors", "Index", "Authors", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Members", "Index", "Members", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Books", "Index", "Books", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Loans", "Index", "Loans", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Author_info", "Index", "Biographies", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Issue Book", "Index", "BookIssues", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                    <form method="get" action="@Url.Action("Index", "Search")">
+                        <input class="serch-input" type="text" name="searchTerm" value="@Request.QueryString["searchTerm"]" placeholder="Search...">
+                        <button class="serch-button" type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My Library using ASP.NET Framework</p>
+            </footer>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/navbar.js"></script>
+
+</body>
+</html>

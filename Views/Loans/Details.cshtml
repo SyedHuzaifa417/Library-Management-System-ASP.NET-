@@ -1,0 +1,52 @@
+﻿@model Library.Models.Loan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Loan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.returnDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.returnDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.MemberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.MemberName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LoanId }, new { @class = "btn btn-default text-bg-success " })
+    <div class="col-md-offset-2 col-md-10 my-4  ">
+        @Html.ActionLink("Back to List", "Index", new { area = "" }, new { @class = "btn btn-default text-bg-secondary " })
+    </div>
+</p>
