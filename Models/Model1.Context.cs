@@ -35,6 +35,7 @@ namespace Library.Models
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Loan> Loans { get; set; }
         public virtual DbSet<Member> Members { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         // Method to call the stored procedure
         public List<SearchLibraryData_Result> SearchLibraryData(string searchTerm)

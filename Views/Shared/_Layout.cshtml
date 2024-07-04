@@ -9,6 +9,9 @@
     <link rel="icon" href="~/favicon.ico" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("Styles", required: false)
+    @*@RenderSection("Styles", required: false): This line ensures that any Styles section defined in a view can be rendered in the layout.
+    This change will allow us to define a Styles section in any view that uses this layout. we can then add specific styles for those views as needed.*@
 </head>
 
 <body>

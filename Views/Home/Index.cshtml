@@ -3,42 +3,124 @@
 }
 
 <main>
-    <section class="row " aria-labelledby="aspnetTitle">
-        <h1 id="title" class="text-center mt-5">My Library</h1>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <h1 id="title" class="text-center mt-5">ABOUT US</h1>
     </section>
 
     <section id="about-us" class="section my-lg-5">
         <div class="container">
-            <h2>About Us</h2>
             <div class="content">
-                <div class="text">
-                    <p class="my-5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi <br />
-                        vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa.<br />
-                        Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Nulla purus neque, sodales egett<br /> eget ante. Aenean mollis
-                        finibus mi nec sagittis. Mauris fermentum neque nec neque luctus finibus.<br /> lectus sed varius. Cras euismod
-                        consectetur mi id gravida. Ut consectetur, elit at consectetur sollicitudin, <br /> lorem nulla accumsan odio, mattis egestas augue velit nec sapien. <br />
-                        Donec facilisis sapien eget enim consequat tincidunt. Nullam <br />faucibus, dui in condimentum fringilla, est sem varius elit, eu suscipit ipsum orci in velit. <br />
-                        Mauris velit justo, lobortis ac vestibulum pretium, malesuada a tortor. Integer convallis justo  <br /> Nullam metus arcu,
-                        dapibus et facilisis sit amet, suscipit nec sapien. Praesent fermentum <br />lobortis quam, et ullamcorper leo condimentum dignissim. Suspendisse in facilisis tortor. <br />
-                        Etiam at nisi massa. Quisque vestibulum venenatis tristique.
 
-                        Aenean non venenatis nulla. Quisque lacus,<br /> molestie tincidunt velit. Vivamus malesuada sit amet nulla iaculis lobortis. <br />
-                        Sed orci felis, iaculis et ex ac, tempor viverra augue. Praesent non semper velit. <br />Quisque vestibulum ornare dui eu blandit. Donec fermentum posuere <br />
-                        enim porta viverra. Praesent non ante libero.
+                <div class="about-us-text">
+                    <p id="about-short" class="my-5 about-content">
+                        A comprehensive library management system developed using ASP.NET. The project leverages a database-first
+                        approach to seamlessly integrate CRUD operations with robust error handling, routing, and validations.
+                        It includes a Web API for managing master details and BookIssue transactions.
                     </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi <br />
-                        vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa.<br />
-                        Lorem ipsum dolor sit amet, consectetur  adipiscing elit. Nulla purus neque, sodales egett<br /> eget ante. Aenean mollis
-                        finibus mi nec sagittis. Mauris fermentum neque nec neque luctus finibus.<br /> lectus sed varius. Cras euismod
-                        consectetur mi id gravida. Ut consectetur, elit at consectetur sollicitudin, <br /> lorem nulla accumsan odio, mattis egestas augue velit nec sapien.
-                    </p>
+                    <div class="about-us-image" id="about-image" style="display: none;">
+                        <img src="~/images/8bce16bf04494786f5b009dc1c23d2c9-removebg-preview.png" alt="About Us Image">
+                    </div>
+                  
+                      <ul id="about-full" class="my-5 about-content" style="display: none;">
+                          <li>
+                              <strong> ASP.NET Framework:</strong> Utilizes ASP.NET for building a scalable and efficient web application.
+</li>
+                          <li>
+                              <strong> Database-First Approach:</strong> Implements CRUD operations with a focus on database schema design and data integrity.
+                          </li>
+                          <li>
+                              <strong> Error Handling</strong> Incorporates structured error handling mechanisms to ensure application stability and reliability.
+</li>
+                          <li>
+                              <strong> Routing: </strong>Utilizes ASP.NET routing for clean and SEO-friendly URLs.
+</li>
+                          <li>
+                              <strong>Validation: </strong> client-side and server-side validations to enforce data integrity and improve user experience.
+</li>
+                          <li>
+                              <strong>Web API: </strong> a RESTful Web API for managing master details and BookIssue transactions.
+</li>
+                           <li>
+                               <strong>  User Interface</strong> Responsive and intuitive user interface designed to enhance usability and accessibility.
+</li>
+                      </ul>
+                 
+
+                    <button id="toggle-button" class="btn btn-primary" onclick="toggleText()">Read More</button>
+
                 </div>
             </div>
         </div>
     </section>
-
-
-
 </main>
+
+@section Scripts {
+    <script>
+        function toggleText() {
+            var shortText = document.getElementById("about-short");
+            var fullText = document.getElementById("about-full");
+            var button = document.getElementById("toggle-button");
+            var image = document.getElementById("about-image");
+
+            if (fullText.style.display === "none") {
+                fullText.style.display = "block";
+                shortText.style.display = "block";
+                button.innerText = "Read Less";
+                image.style.display = "block";
+            } else {
+                fullText.style.display = "none";
+                shortText.style.display = "block";
+                button.innerText = "Read More";
+                image.style.display = "none";
+            }
+        }
+    </script>
+}
+
+@section Styles {
+    <style>
+        .about-us-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .about-us-image {
+            order: 2;
+        }
+
+            .about-us-image img {
+                max-width: 200px;
+                height: auto;
+                border-radius: 10px;
+            }
+
+        .about-us-text {
+            max-width: 700px;
+            color:#0e0d0e;
+            text-align: left;
+        }
+
+            .about-us-text h2 {
+                margin-top: 0;
+            }
+
+        .about-content {
+            margin-bottom: 20px;
+        }
+
+        #toggle-button {
+            padding: 10px 20px;
+            background-color: #0e1b42;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            #toggle-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+}

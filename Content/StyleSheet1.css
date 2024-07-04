@@ -70,7 +70,7 @@ html, body {
     color: #333;
     background-color: rgb(130, 160, 160, 0.30);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     font-size: 1rem;
     font-weight: bold;
@@ -133,3 +133,4 @@ html, body {
     .navbar .serch-button:hover {
         background-color: rgba(255, 255, 255, 0.5)
     }
+    
