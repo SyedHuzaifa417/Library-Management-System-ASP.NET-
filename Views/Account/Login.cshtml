@@ -1,0 +1,65 @@
+﻿@model Library.Models.UserLoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="bi bi-x-circle"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    if (!string.IsNullOrEmpty(ViewBag.Error))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                    if (!string.IsNullOrEmpty(ViewBag.Message))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @ViewBag.Message
+                        </div>
+                    }
+                    @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label my-2" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                    @Html.LabelFor(m => m.Password, htmlAttributes: new { @class = "control-label my-2" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "required" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                    <button class="btn btn-primary btn-lg w-100 shadow-lg my-5" type="submit">Sign in</button>
+                }
+            </div>
+            <div class="modal-footer justify-content-center">
+                <p> Don't have an account?  <a href="@Url.Action("Register", "Account")" class="text-dark font-weight-bold fw-bolder text-decoration-none">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            // Close modal when clicking the "X" button
+            $('.modal .close').click(function () {
+                $(this).closest('.modal').modal('hide');
+                window.location.href = '/Home/Index';  // Redirect to home page after successful registration
+            });
+        });
+        $(document).ready(function () {
+            $('#loginModal').modal('show');
+        });
+    </script>
+}

@@ -12,6 +12,30 @@ using System;
 
 namespace Library.Models
 {
+    public class UserLoginViewModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        public string Password { get; set; }
+    }
+    public class UserRegisterViewModel
+    {
+        [Required]
+        [StringLength(100)]
+        public string UserName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [StringLength(100)]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(256)]
+        public string Password { get; set; }
+    }
     public class User
     {
         public int UserId { get; set; }
@@ -31,4 +55,5 @@ namespace Library.Models
 
         public DateTime CreatedDate { get; set; }
     }
+
 }

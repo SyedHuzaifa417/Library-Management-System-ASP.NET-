@@ -13,6 +13,7 @@ public class BookIssuesController : Controller
 {
     private readonly string apiBaseUrl = "https://localhost:44356/";
 
+    [Authorize]
     public async Task<ActionResult> Index()
     {
         var model = await PrepareIndexModel();

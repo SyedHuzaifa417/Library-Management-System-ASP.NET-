@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/StyleSheet1.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh/jFcR1mwjFJkSA0kV/HfGR0/p2J6cpa9u8H" crossorigin="anonymous"></script>
     <link rel="icon" href="~/favicon.ico" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("Styles", required: false)
     @*@RenderSection("Styles", required: false): This line ensures that any Styles section defined in a view can be rendered in the layout.
-    This change will allow us to define a Styles section in any view that uses this layout. we can then add specific styles for those views as needed.*@
+        This change will allow us to define a Styles section in any view that uses this layout. we can then add specific styles for those views as needed.*@
 </head>
 
 <body>
@@ -39,7 +43,29 @@
                         <button class="serch-button" type="submit"><i class="bi bi-search"></i></button>
                     </form>
                 </div>
-            </div>
+
+                <div class="nav-item dropdown mx-lg-5">
+                    @if (Session["UserId"] != null)
+                    {
+                        <a href="@Url.Action("Logout", "Account")" class="nav-link ">Sign Out</a>
+                    }
+                    else
+                    {
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-person-circle h4" style="color:dimgray;"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a href="@Url.Action("Login", "Account")" class="dropdown-item fw-semibold">Sign In</a>
+                            <a href="@Url.Action("Register", "Account")" class="dropdown-item fw-semibold">Register</a>
+                        </div>
+
+                    }
+                </div>
+                </div>
+           
+          
+
         </nav>
         <div class="container content">
             @RenderBody()
@@ -50,6 +76,9 @@
         </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

@@ -14,36 +14,42 @@
                 <div class="about-us-text">
                     <p id="about-short" class="my-5 about-content">
                         A comprehensive library management system developed using ASP.NET. The project leverages a database-first
-                        approach to seamlessly integrate CRUD operations with robust error handling, routing, and validations.
+                        approach to seamlessly integrate CRUD operations with robust error handling, routing,authenticaton, authorization and validations.
                         It includes a Web API for managing master details and BookIssue transactions.
                     </p>
                     <div class="about-us-image" id="about-image" style="display: none;">
                         <img src="~/images/8bce16bf04494786f5b009dc1c23d2c9-removebg-preview.png" alt="About Us Image">
                     </div>
                   
-                      <ul id="about-full" class="my-5 about-content" style="display: none;">
-                          <li>
-                              <strong> ASP.NET Framework:</strong> Utilizes ASP.NET for building a scalable and efficient web application.
-</li>
-                          <li>
-                              <strong> Database-First Approach:</strong> Implements CRUD operations with a focus on database schema design and data integrity.
-                          </li>
-                          <li>
-                              <strong> Error Handling</strong> Incorporates structured error handling mechanisms to ensure application stability and reliability.
-</li>
-                          <li>
-                              <strong> Routing: </strong>Utilizes ASP.NET routing for clean and SEO-friendly URLs.
-</li>
-                          <li>
-                              <strong>Validation: </strong> client-side and server-side validations to enforce data integrity and improve user experience.
-</li>
-                          <li>
-                              <strong>Web API: </strong> a RESTful Web API for managing master details and BookIssue transactions.
-</li>
-                           <li>
-                               <strong>  User Interface</strong> Responsive and intuitive user interface designed to enhance usability and accessibility.
-</li>
-                      </ul>
+                    <ul id="about-full" class="my-5 about-content" style="display: none;">
+                        <li>
+                            <strong> ASP.NET Framework:</strong> Utilizes ASP.NET for building a scalable and efficient web application.
+                        </li>
+                        <li>
+                            <strong> Database-First Approach:</strong> Implements CRUD operations with a focus on database schema design and data integrity.
+                        </li>
+                        <li>
+                            <strong> Error Handling</strong> Incorporates structured error handling mechanisms to ensure application stability and reliability.
+                        </li>
+                        <li>
+                            <strong> Routing: </strong>Utilizes ASP.NET routing for clean and SEO-friendly URLs.
+                        </li>
+                        <li>
+                            <strong>Validation: </strong> client-side and server-side validations to enforce data integrity and improve user experience.
+                        </li>
+                        <li>
+                            <strong>Web API: </strong> a RESTful Web API for managing master details and BookIssue transactions.
+                        </li>
+                        <li>
+                            <strong>Authentication:</strong> verifying the identity of user that is attempting to issue books.
+                        </li>
+                        <li>
+                            <strong>Authorization: </strong> determining the actions a user is allowed to perform after successful authentication.
+                        </li>
+                        <li>
+                            <strong>  User Interface</strong> Responsive and intuitive user interface designed to enhance usability and accessibility.
+                        </li>
+                    </ul>
                  
 
                     <button id="toggle-button" class="btn btn-primary" onclick="toggleText()">Read More</button>
