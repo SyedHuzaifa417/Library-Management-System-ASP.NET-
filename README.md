@@ -10,6 +10,7 @@ This repository hosts a comprehensive library management system developed using 
 - **Routing:** Utilizes ASP.NET routing for clean and SEO-friendly URLs.
 - **Validation:** Implements client-side and server-side validations to enforce data integrity and improve user experience.
 - **Web API:** Provides a RESTful Web API for managing master details and BookIssue transactions.
+- **Authentication and Authorization:** Ensures secure access with user authentication and role-based authorization, validating user credentials and restricting access to sensitive operations.
 - **User Interface:** Responsive and intuitive user interface designed to enhance usability and accessibility.
 
   ## Prerequisites
